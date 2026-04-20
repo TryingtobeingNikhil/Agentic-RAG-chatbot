@@ -10,4 +10,4 @@ chroma_db/
 vectorstore/
 *.egg-info/
 .idea/
-adaptive-rag.zip
+adaptive-rag.zipapp.log
