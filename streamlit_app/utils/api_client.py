@@ -16,93 +16,26 @@ PYTHON_BASE_URL = "http://127.0.0.1:8000"
 
 def create_user(username: str, password: str, api_token: str) -> bool:
     """
-    Create a new user account.
-
-    Args:
-        username: Username for the new account.
-        password: Password for the new account.
-        api_token: API token for authentication.
-
-    Returns:
-        True if user creation succeeds, False otherwise.
+    Mock create_user since Rust backend is not available.
     """
-    headers = {
-        "X-API-TOKEN": api_token,
-        "Content-Type": "application/json"
-    }
-    logger.info("API Token received: %s", api_token)
-
-    try:
-        response = requests.post(
-            f"{RUST_BASE_URL}/create_user",
-            json={"username": username, "password": password},
-            headers=headers,
-        )
-
-        logger.info("Calling /create_user, status code: %s", response.status_code)
-
-        if response.status_code == 200:
-            try:
-                logger.debug("Create user response: %s", response.json())
-            except ValueError:
-                logger.warning("Create user returned non-JSON response")
-            return True
-        else:
-            logger.error(
-                "Create user failed: %s - %s",
-                response.status_code,
-                response.text
-            )
-            return False
-
-    except requests.RequestException as e:
-        logger.exception("Request to /create_user failed: %s", e)
-        return False
+    logger.info("Mock create_user called for %s", username)
+    return True
 
 
 def login_user(username: str, password: str, api_token: str) -> dict:
     """
-    Authenticate user login.
-
-    Args:
-        username: Username to log in.
-        password: Password for the user.
-        api_token: API token for authentication.
-
-    Returns:
-        Response dictionary with JWT token if successful, None otherwise.
+    Mock login_user since Rust backend is not available.
     """
-    headers = {
-        "X-API-TOKEN": api_token,
-        "Content-Type": "application/json"
-    }
-    response = requests.post(
-        f"{RUST_BASE_URL}/login",
-        json={"username": username, "password": password},
-        headers=headers,
-    )
-    logger.info("Calling /login, status code: %s", response.json())
-
-    if response.status_code == 200:
-        return response.json()
-
-    return None
+    logger.info("Mock login_user called for %s", username)
+    return {"jwt": "mock_jwt_token"}
 
 
 def get_api_token() -> str:
     """
-    Get an API token for authentication.
-
-    Returns:
-        API token string if successful, None otherwise.
+    Mock get_api_token since Rust backend is not available.
     """
-    response = requests.post(f"{RUST_BASE_URL}/init")
-    logger.info("Calling /init, status code: %s", response.json())
-
-    if response.status_code == 200:
-        return response.json()["api_token"]
-
-    return None
+    logger.info("Mock get_api_token called")
+    return "mock_api_token"
 
 
 def query_backend(query: str, session_id: str) -> str:
