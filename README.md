@@ -5,7 +5,7 @@
 [![LangGraph](https://img.shields.io/badge/LangGraph-0.5.4-orange.svg)](https://python.langchain.com/langgraph/)
 [![Free to Run](https://img.shields.io/badge/Cost-Free-brightgreen.svg)](#-cost)
 
-## 📋 Overview......./.
+## 📋 Overview......./
 
 Adaptive RAG is an intelligent end-to-end Retrieval-Augmented Generation system powered by agentic AI architecture. It combines dynamic query routing, intelligent document retrieval, and advanced LLM capabilities to provide accurate, context-aware answers to user queries.
 
